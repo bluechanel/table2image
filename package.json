@@ -12,6 +12,7 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
+    "@next/third-parties": "^15.3.2",
     "@opennextjs/cloudflare": "^1.0.2",
     "clsx": "^2.1.1",
     "html-to-image": "^1.11.13",
