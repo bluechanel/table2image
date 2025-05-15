@@ -53,12 +53,35 @@ export default function TableExporter({ tableRef, theme, onThemeChange, width, o
 
       // 克隆表格元素及其所有子节点
       const clone = tableElement.cloneNode(true) as HTMLElement;
-      // 复制所有内联样式
+      // 复制所有计算后的样式
       const computedStyles = window.getComputedStyle(tableElement);
-      for (let i = 0; i < computedStyles.length; i++) {
-        const prop = computedStyles[i];
-        clone.style.setProperty(prop, computedStyles.getPropertyValue(prop));
-      }
+      Array.from(computedStyles).forEach(prop => {
+        const value = computedStyles.getPropertyValue(prop);
+        if (value) {
+          clone.style.setProperty(prop, value);
+        }
+      });
+
+      // 递归复制所有子元素的计算样式
+      const copyComputedStyles = (source: Element, target: Element) => {
+        const sourceStyles = window.getComputedStyle(source);
+        const targetElement = target as HTMLElement;
+        Array.from(sourceStyles).forEach(prop => {
+          const value = sourceStyles.getPropertyValue(prop);
+          if (value) {
+            targetElement.style.setProperty(prop, value);
+          }
+        });
+      };
+
+      // 对所有单元格应用计算样式
+      const sourceCells = tableElement.querySelectorAll('th, td');
+      const targetCells = clone.querySelectorAll('th, td');
+      sourceCells.forEach((cell, index) => {
+        if (targetCells[index]) {
+          copyComputedStyles(cell, targetCells[index]);
+        }
+      });
       
       // 应用主题样式
       const selectedTheme = themes[theme as keyof typeof themes];
