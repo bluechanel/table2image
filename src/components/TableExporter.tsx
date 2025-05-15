@@ -1,7 +1,7 @@
 'use client';
 
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { toPng } from 'html-to-image';
 import { themes } from '@/themes/themes';
 
@@ -63,7 +63,7 @@ export default function TableExporter({ tableRef, theme, onThemeChange, width, o
       // 应用主题样式
       const selectedTheme = themes[theme as keyof typeof themes];
       const rows = clone.querySelectorAll('tr');
-      rows.forEach((row, rowIndex) => {
+      rows.forEach((row) => {
         const cells = row.querySelectorAll('th, td');
         cells.forEach((cell, cellIndex) => {
           const cellElement = cell as HTMLElement;

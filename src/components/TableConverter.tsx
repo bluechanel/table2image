@@ -2,12 +2,6 @@
 
 import { useState, useRef, ChangeEvent } from 'react';
 import * as XLSX from 'xlsx';
-import { cn } from '@/lib/utils';
-
-interface TableData {
-  headers: string[];
-  rows: string[][];
-}
 
 interface TableData {
   headers: string[];
@@ -19,7 +13,6 @@ interface TableConverterProps {
 }
 
 export default function TableConverter({ onTableDataChange }: TableConverterProps) {
-  const [tableData, setTableData] = useState<TableData | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [pasteContent, setPasteContent] = useState('');
 
@@ -40,10 +33,8 @@ export default function TableConverter({ onTableDataChange }: TableConverterProp
           headers: jsonData[0],
           rows: jsonData.slice(1)
         };
-        setTableData(newTableData);
         onTableDataChange(newTableData);
       } else {
-        setTableData(null);
         onTableDataChange(null);
       }
     };
@@ -66,7 +57,6 @@ export default function TableConverter({ onTableDataChange }: TableConverterProp
         headers,
         rows
       };
-      setTableData(newTableData);
       onTableDataChange(newTableData);
     }
   };
