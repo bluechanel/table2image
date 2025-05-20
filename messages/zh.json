@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "表格转换为图片",
+    "description": "将excel表格或者Markdown表格转换为图片，支持多种表格主题样式"
+  },
+  "Home": {
+    "preview": "预览"
+  },
+  "tableConverter": {
+    "title": "数据输入",
+    "uploadButton": "上传Excel文件",
+    "uploadHint": "支持.xlsx和.xls格式，可拖拽文件到此处",
+    "pasteLabel": "或粘贴Markdown表格",
+    "pastePlaceholder": "粘贴Markdown格式的表格内容..."
+  },
+  "themes": {
+    "default": "默认",
+    "blue": "蓝色",
+    "turquoise": "土耳其蓝",
+    "kleinBlue": "克莱因蓝",
+    "green": "绿色",
+    "red": "红色",
+    "pink": "粉红",
+    "yellow": "黄色",
+    "dark": "暗黑"
+  },
+  "tableExporter": {
+    "title": "表格设置",
+    "themeLabel": "表格主题",
+    "widthLabel": "宽度 (px)",
+    "headerRowLabel": "表头(行)",
+    "headerColumnLabel": "表头(列)",
+    "exportButton": "导出为图片",
+    "exportingButton": "导出中..."
+  }
+}

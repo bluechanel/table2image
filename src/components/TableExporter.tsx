@@ -1,9 +1,9 @@
 'use client';
 
-
 import { useState } from 'react';
 import { toPng } from 'html-to-image';
 import { themes } from '@/themes/themes';
+import { useTranslations } from 'next-intl';
 
 interface TableExporterProps {
   tableRef: React.RefObject<HTMLDivElement>;
@@ -142,13 +142,16 @@ export default function TableExporter({ tableRef, theme, onThemeChange, width, o
     }
   };
 
+  const t = useTranslations('tableExporter');
+  const tt = useTranslations('themes');
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">表格设置</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <h2 className="text-2xl font-bold">{t('title')}</h2>
+      <div className="flex flex-col gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            表格主题
+            {t('themeLabel')}
           </label>
           <select
             value={theme}
@@ -157,7 +160,7 @@ export default function TableExporter({ tableRef, theme, onThemeChange, width, o
           >
             {Object.entries(themes).map(([key, theme]) => (
               <option key={key} value={key}>
-                {theme.name}
+                {tt(theme.name)}
               </option>
             ))}
           </select>
@@ -165,49 +168,49 @@ export default function TableExporter({ tableRef, theme, onThemeChange, width, o
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            宽度 (px)
+            {t('widthLabel')}
           </label>
           <input
             type="number"
             value={width}
             onChange={(e) => {
-  const newWidth = Number(e.target.value);
-  onWidthChange(newWidth);
-}}
+              const newWidth = Number(e.target.value);
+              onWidthChange(newWidth);
+            }}
             className="w-24 px-2 py-1 border rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             min="100"
           />
         </div>
 
         <div className="space-y-2">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="highlightHeaderRow"
-                  checked={highlightHeaderRow}
-                  onChange={(e) => onHighlightHeaderRow(e.target.checked)}
-                  className="mr-2"
-                />
-                <label htmlFor="highlightHeaderRow">表头(行)</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="highlightHeaderColumn"
-                  checked={highlightHeaderColumn}
-                  onChange={(e) => onHighlightHeaderColumn(e.target.checked)}
-                  className="mr-2"
-                />
-                <label htmlFor="highlightHeaderColumn">表头(列)</label>
-              </div>
-              <button
-                onClick={handleExport}
-                disabled={isExporting}
-                className={`px-4 py-1 rounded text-white ${isExporting ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} transition-colors`}
-              >
-                {isExporting ? '导出中...' : '导出为图片'}
-              </button>
-            </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="highlightHeaderRow"
+              checked={highlightHeaderRow}
+              onChange={(e) => onHighlightHeaderRow(e.target.checked)}
+              className="mr-2"
+            />
+            <label htmlFor="highlightHeaderRow">{t('headerRowLabel')}</label>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="highlightHeaderColumn"
+              checked={highlightHeaderColumn}
+              onChange={(e) => onHighlightHeaderColumn(e.target.checked)}
+              className="mr-2"
+            />
+            <label htmlFor="highlightHeaderColumn">{t('headerColumnLabel')}</label>
+          </div>
+          <button
+            onClick={handleExport}
+            disabled={isExporting}
+            className={`px-4 py-1 rounded text-white ${isExporting ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} transition-colors`}
+          >
+            {isExporting ? t('exportingButton') : t('exportButton')}
+          </button>
+        </div>
       </div>
     </div>
   );

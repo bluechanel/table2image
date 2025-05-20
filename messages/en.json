@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "table2image",
+    "description": "Convert Excel tables or Markdown tables to images, supporting multiple table theme styles"
+  },
+  "Home": {
+    "preview": "Preview"
+  },
+  "tableConverter": {
+    "title": "Data Input",
+    "uploadButton": "Upload Excel File",
+    "uploadHint": "Supports .xlsx and .xls formats, drag and drop files here",
+    "pasteLabel": "Or paste Markdown table",
+    "pastePlaceholder": "Paste Markdown table content..."
+  },
+  "themes": {
+    "default": "Default",
+    "blue": "Blue",
+    "turquoise": "Turquoise",
+    "kleinBlue": "Klein Blue",
+    "green": "Green",
+    "red": "Red",
+    "pink": "Pink",
+    "yellow": "Yellow",
+    "dark": "Dark"
+  },
+  "tableExporter": {
+    "title": "Table Settings",
+    "themeLabel": "Table Theme",
+    "widthLabel": "Width (px)",
+    "headerRowLabel": "Table Header(row)",
+    "headerColumnLabel": "Table Header(column)",
+    "exportButton": "Export to png",
+    "exportingButton": "Exporting..."
+  }
+}

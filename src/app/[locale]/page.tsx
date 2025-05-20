@@ -1,16 +1,19 @@
 'use client';
 
+import {useTranslations} from 'next-intl';
 import { useRef, useState } from 'react';
 import TableConverter from '@/components/TableConverter';
 import TableExporter from '@/components/TableExporter';
 import TablePreview from '@/components/TablePreview';
 
+ 
 interface TableData {
-  headers: string[];
-  rows: string[][];
-}
+    headers: string[];
+    rows: string[][];
+  }
 
 export default function Home() {
+  const t = useTranslations('Home');
   const previewRef = useRef<HTMLDivElement>(null);
   const [tableData, setTableData] = useState<TableData | null>(null);
   const [theme, setTheme] = useState('default');
@@ -40,7 +43,7 @@ export default function Home() {
 
         {/* Right Column: Preview */}
         <div className="md:col-span-2 bg-white p-6 rounded-lg shadow">
-          <h2 className="text-2xl font-bold mb-4">预览</h2>
+          <h2 className="text-2xl font-bold mb-4">{t("preview")}</h2>
           <div ref={previewRef} className="overflow-auto border border-gray-200 rounded">
             <TablePreview tableData={tableData} theme={theme} width={width} highlightHeaderColumn={highlightHeaderColumn} highlightHeaderRow={highlightHeaderRow} />
           </div>

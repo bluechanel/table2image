@@ -13,7 +13,7 @@ export interface Themes {
 
 export const themes: Themes = {
   default: {
-    name: '默认',
+    name: 'default',
     borderColor: '#e5e7eb',
     rowBg: '#ffffff',
     textColor: '#111827',
@@ -21,7 +21,7 @@ export const themes: Themes = {
     headerColumnBg: '#f3f4f6'
   },
   blue: {
-    name: '蓝色',
+    name: 'blue',
     borderColor: '#93c5fd',
     rowBg: '#eff6ff',
     textColor: '#1e40af',
@@ -29,7 +29,7 @@ export const themes: Themes = {
     headerColumnBg: '#3b82f6'
   },
   turquoise: {
-    name: '土耳其蓝',
+    name: 'turquoise',
     borderColor: '#67e8f9',
     rowBg: '#ecfeff',
     textColor: '#164e63',
@@ -37,7 +37,7 @@ export const themes: Themes = {
     headerColumnBg: '#06b6d4'
   },
   kleinBlue: {
-    name: '克莱因蓝',
+    name: 'kleinBlue',
     borderColor: '#4B61D1',  // 柔和的边框蓝
     rowBg: '#002FA7',       // 极浅的背景蓝
     textColor: '#FFFFFF',   // 经典克莱因蓝色调
@@ -45,7 +45,7 @@ export const themes: Themes = {
     headerColumnBg: '#000080'
   },
   green: {
-    name: '绿色',
+    name: 'green',
     borderColor: '#86efac',
     rowBg: '#f0fdf4',
     textColor: '#166534',
@@ -53,7 +53,7 @@ export const themes: Themes = {
     headerColumnBg: '#22c55e'
   },
   red: {
-    name: '红色',
+    name: 'red',
     borderColor: '#fca5a5',
     rowBg: '#fef2f2',
     textColor: '#991b1b',
@@ -61,7 +61,7 @@ export const themes: Themes = {
     headerColumnBg: '#ef4444'
   },
   pink: {
-    name: '粉红',
+    name: 'pink',
     borderColor: '#f9a8d4',
     rowBg: '#fdf2f8',
     textColor: '#9d174d',
@@ -69,7 +69,7 @@ export const themes: Themes = {
     headerColumnBg: '#ec4899'
   },
   yellow: {
-    name: '黄色',
+    name: 'yellow',
     borderColor: '#fde047',
     rowBg: '#fefce8',
     textColor: '#854d0e',
@@ -77,7 +77,7 @@ export const themes: Themes = {
     headerColumnBg: '#eab308'
   },
   dark: {
-    name: '暗黑',
+    name: 'dark',
     borderColor: '#374151',
     rowBg: '#1f2937',
     textColor: '#f3f4f6',
