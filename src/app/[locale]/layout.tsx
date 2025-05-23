@@ -29,7 +29,32 @@ export async function generateMetadata(
 
   return {
     title: messages.metadata.title,
-    description: messages.metadata.description
+    description: messages.metadata.description,
+    keywords: "table to image, excel to image, markdown table, table converter, 表格转图片",
+    viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+    robots: "index, follow",
+    openGraph: {
+      type: "website",
+      locale: locale,
+      url: "https://table2image.wileyzhang.com",
+      siteName: messages.metadata.title,
+      title: messages.metadata.title,
+      description: messages.metadata.description,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: messages.metadata.title
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: messages.metadata.title,
+      description: messages.metadata.description,
+      images: ["/og-image.png"]
+    }
   };
 }
 
@@ -46,9 +71,52 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
  
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://table2image.wileyzhang.com/#website",
+        "url": "https://table2image.wileyzhang.com",
+        "name": messages.metadata.title,
+        "description": messages.metadata.description,
+        "inLanguage": locale
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://table2image.wileyzhang.com/#webpage",
+        "url": "https://table2image.wileyzhang.com",
+        "name": messages.metadata.title,
+        "description": messages.metadata.description,
+        "isPartOf": { "@id": "https://table2image.wileyzhang.com/#website" },
+        "inLanguage": locale
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://table2image.wileyzhang.com/#organization",
+        "url": "https://table2image.wileyzhang.com",
+        "name": messages.metadata.title,
+        "description": messages.metadata.description,
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://table2image.wileyzhang.com/og-image.png",
+          "width": 1200,
+          "height": 630
+        }
+      }
+    ]
+  };
+
   return (
     <html lang={locale}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
           <LanguageSwitcher />
