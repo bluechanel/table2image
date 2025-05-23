@@ -42,7 +42,7 @@ export async function generateMetadata(
       description: messages.metadata.description,
       images: [
         {
-          url: "/og-image.png",
+          url: "https://table2image.wileyzhang.com/og-image.png",
           width: 1200,
           height: 630,
           alt: messages.metadata.title
@@ -53,7 +53,7 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: messages.metadata.title,
       description: messages.metadata.description,
-      images: ["/og-image.png"]
+      images: ["https://table2image.wileyzhang.com/og-image.png"]
     }
   };
 }
